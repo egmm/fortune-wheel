@@ -23,9 +23,7 @@ const FortuneWheel = ({ segments }: Props) => {
   useEffect(() => {
     if (isDone.value) {
       setTimeout(() => {
-        if (result.value) {
-          navigateToResult(result.value);
-        }
+        navigateToResult(segments.value[0]);
       }, 2000);
     }
   }, [isDone.value]);
@@ -39,7 +37,6 @@ const FortuneWheel = ({ segments }: Props) => {
     );
 
     if (segments.value.length === 1) {
-      result.value = segments.value[0];
       isDone.value = true;
     }
   };
