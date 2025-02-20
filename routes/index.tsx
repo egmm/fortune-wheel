@@ -1,5 +1,5 @@
-import Wheel from "../islands/wheel.tsx";
+import FortuneWheel from "../islands/fortune-wheel.tsx";
 
 export default function Home() {
-  return <Wheel />;
+  return <FortuneWheel />;
 }

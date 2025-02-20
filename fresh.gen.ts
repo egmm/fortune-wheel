@@ -5,7 +5,7 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $wheel from "./islands/wheel.tsx";
+import * as $fortune_wheel from "./islands/fortune-wheel.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -15,7 +15,7 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
-    "./islands/wheel.tsx": $wheel,
+    "./islands/fortune-wheel.tsx": $fortune_wheel,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

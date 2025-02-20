@@ -1,4 +1,5 @@
 import { signal } from "@preact/signals";
+import { Wheel } from "../components/Wheel.tsx";
 
 const segments = [
   "Prize 1",
@@ -12,7 +13,7 @@ const isSpinning = signal(false);
 const result = signal<string | null>(null);
 const rotation = signal(0);
 
-const Wheel = () => {
+const FortuneWheel = () => {
   const segmentAngle = 360 / segments.length;
 
   const spinWheel = () => {
@@ -31,23 +32,11 @@ const Wheel = () => {
   };
   return (
     <div className="h-full flex flex-col items-center">
-      <div
-        id="wheel"
-        className="relative w-64 h-64 border-4 border-gray-300 rounded-full overflow-hidden transition-transform ease-out duration-[3000ms]"
-        style={{ transform: `rotate(${rotation.value}deg)` }}
-      >
-        {segments.map((segment, index) => (
-          <div
-            key={index}
-            className="absolute w-full h-full flex"
-            style={{ transform: `rotate(${index * segmentAngle}deg)` }}
-          >
-            <div className="w-1/2 h-full flex items-center justify-center border-r-2 border-gray-300 origin-bottom">
-              {segment}
-            </div>
-          </div>
-        ))}
-      </div>
+      <Wheel
+        rotation={rotation}
+        segments={segments}
+        segmentAngle={segmentAngle}
+      />
       <button
         onClick={spinWheel}
         disabled={isSpinning.value}
@@ -62,4 +51,4 @@ const Wheel = () => {
   );
 };
 
-export default Wheel;
+export default FortuneWheel;
