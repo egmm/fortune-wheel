@@ -1,12 +1,14 @@
-import { signal } from "@preact/signals";
+import { Signal, signal } from "@preact/signals";
 import { Wheel } from "../components/Wheel.tsx";
 
-const segments = signal<string[]>([]);
 const isSpinning = signal(false);
 const result = signal<string | null>(null);
 const rotation = signal(0);
 
-const FortuneWheel = () => {
+interface Props {
+  segments: Signal<string[]>;
+}
+const FortuneWheel = ({ segments }: Props) => {
   const segmentAngle = 360 / segments.value.length;
 
   const spinWheel = () => {
@@ -36,15 +38,13 @@ const FortuneWheel = () => {
         segments={segments}
         segmentAngle={segmentAngle}
       />
-      {segments.value.length > 0 && (
-        <button
-          onClick={spinWheel}
-          disabled={isSpinning.value}
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
-        >
-          Spin
-        </button>
-      )}
+      <button
+        onClick={spinWheel}
+        disabled={isSpinning.value}
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+      >
+        Spin
+      </button>
       {result.value && (
         <div className="mt-4 text-lg font-bold">You won: {result.value}</div>
       )}

@@ -39,7 +39,7 @@ const CreateList = () => {
         ))}
       </ul>
 
-      <form action="/fortune-wheel" method="GET" className="mt-4">
+      <form action="/spin-the-wheel" method="GET" className="mt-4">
         <input type="hidden" name="segments" value={segments.value.join(",")} />
         <button
           type="submit"
