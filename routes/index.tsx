@@ -1,5 +1,5 @@
-import FortuneWheel from "../islands/fortune-wheel.tsx";
+import CreateList from "../islands/create-list.tsx";
 
 export default function Home() {
-  return <FortuneWheel />;
+  return <CreateList />;
 }
