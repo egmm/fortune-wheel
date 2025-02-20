@@ -1,32 +1,57 @@
 import { Signal, signal } from "@preact/signals";
 import { Wheel } from "../components/Wheel.tsx";
-
-const isSpinning = signal(false);
-const result = signal<string | null>(null);
-const rotation = signal(0);
+import { useEffect } from "preact/hooks";
 
 interface Props {
   segments: Signal<string[]>;
 }
+
+const isSpinning = signal(false);
+const result = signal<string | null>(null);
+const rotation = signal(0);
+const isDone = signal(false);
+
+const navigateToResult = (result: string) => {
+  globalThis.location.href = `/spin-the-wheel/result?segment=${
+    encodeURIComponent(result)
+  }`;
+};
+
 const FortuneWheel = ({ segments }: Props) => {
   const segmentAngle = 360 / segments.value.length;
 
+  useEffect(() => {
+    if (isDone.value) {
+      setTimeout(() => {
+        if (result.value) {
+          navigateToResult(result.value);
+        }
+      }, 2000);
+    }
+  }, [isDone.value]);
+
+  const onSpinningEnd = (selectedIndex: number) => () => {
+    isSpinning.value = false;
+    result.value = segments.value[selectedIndex];
+
+    segments.value = segments.value.filter((_, index) =>
+      index !== selectedIndex
+    );
+
+    if (segments.value.length === 1) {
+      result.value = segments.value[0];
+      isDone.value = true;
+    }
+  };
   const spinWheel = () => {
     if (isSpinning.value) return;
 
     isSpinning.value = true;
     const randomIndex = Math.floor(Math.random() * segments.value.length);
+    // 3 means that we're doing 3 full spins
     const spinAngle = 360 * 3 + randomIndex * segmentAngle;
 
-    setTimeout(() => {
-      isSpinning.value = false;
-      result.value = segments.value[randomIndex];
-
-      // removing selected segment
-      segments.value = segments.value.filter((_, index) =>
-        index !== randomIndex
-      );
-    }, 3000);
+    setTimeout(onSpinningEnd(randomIndex), 3000);
 
     rotation.value = rotation.value + spinAngle;
   };
@@ -46,7 +71,9 @@ const FortuneWheel = ({ segments }: Props) => {
         Spin
       </button>
       {result.value && (
-        <div className="mt-4 text-lg font-bold">You won: {result.value}</div>
+        <div className="mt-4 text-lg font-bold">
+          Eliminating: {result.value}
+        </div>
       )}
     </div>
   );
