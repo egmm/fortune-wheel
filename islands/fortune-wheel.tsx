@@ -46,7 +46,7 @@ const FortuneWheel = ({ segments }: Props) => {
     isSpinning.value = true;
     const randomIndex = Math.floor(Math.random() * segments.value.length);
     // 3 means that we're doing 3 full spins
-    const spinAngle = 360 * 3 + randomIndex * segmentAngle;
+    const spinAngle = 360 * 3 - randomIndex * segmentAngle;
 
     setTimeout(onSpinningEnd(randomIndex), 3000);
 

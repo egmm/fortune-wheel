@@ -32,7 +32,7 @@ export const Wheel = ({ rotation, segments, segmentAngle }: Props) => {
             <div
               className="absolute w-1/2 h-1/2 origin-bottom-right clip-wedge flex items-center justify-center"
               style={{
-                transform: `rotate(${index * segmentAngle}deg)`,
+                transform: `rotate(${index * segmentAngle + 45}deg)`,
                 backgroundColor: colors[index],
               }}
             >
