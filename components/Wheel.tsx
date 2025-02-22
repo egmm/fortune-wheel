@@ -5,23 +5,32 @@ interface Props {
   segments: Signal<string[]>;
   segmentAngle: number;
 }
+
+const generateColors = (count: number): string[] => {
+  return Array.from(
+    { length: count },
+    (_, i) => `hsl(${(i * 360) / count}, 70%, 60%)`,
+  );
+};
+
 export const Wheel = ({ rotation, segments, segmentAngle }: Props) => {
+  const colors = generateColors(segments.value.length);
   return segments.value.length > 0
     ? (
       <div
         id="wheel"
-        className="relative w-64 h-64 border-4 border-gray-300 rounded-full overflow-hidden transition-transform ease-out duration-[3000ms]"
+        className="relative w-96 h-96 border-4 border-gray-300 rounded-full overflow-hidden transition-transform ease-out duration-[3000ms]"
         style={{ transform: `rotate(${rotation.value}deg)` }}
       >
         {segments.value.map((segment, index) => (
           <div
-            key={index}
-            className="absolute w-full h-full flex"
-            style={{ transform: `rotate(${index * segmentAngle}deg)` }}
+            className="absolute w-1/2 h-1/2 origin-bottom-right clip-wedge flex items-center justify-center"
+            style={{
+              transform: `rotate(${index * segmentAngle}deg)`,
+              backgroundColor: colors[index],
+            }}
           >
-            <div className="w-1/2 h-full flex items-center justify-center border-r-2 border-gray-300 origin-bottom">
-              {segment}
-            </div>
+            <span className="rotate-[45deg]">{segment}</span>
           </div>
         ))}
       </div>
