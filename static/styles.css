@@ -10,3 +10,7 @@
 .clip-wedge {
   clip-path: polygon(0 0, 50% 0, 100% 100%, 0 50%);
 }
+
+.clip-triangle {
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
