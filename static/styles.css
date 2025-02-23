@@ -4,8 +4,12 @@
 
 @layer base {
   html, body {
-    @apply h-full w-full;
-    background-color: #141414;
+    @apply h-full w-full text-white;
+    background-color: var(--color-background);
+  }
+  :root {
+    --color-background: #141414;
+    --color-spinred: #e50914;
   }
 }
 .clip-wedge {
@@ -17,6 +21,6 @@
 }
 
 .navbar {
-  @apply flex justify-between items-center p-4 text-white;
+  @apply flex justify-between items-center p-4;
   background-color: #0a0a0a;
 }

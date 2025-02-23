@@ -18,8 +18,9 @@ const CreateList = () => {
         <input
           ref={inputRef}
           type="text"
-          className="mt-4 px-4 py-2 border"
+          className="mt-4 px-4 py-2 bg-background border border-gray-600 rounded-md"
           name="segment"
+          placeholder="Add a film"
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               addSegment();
@@ -28,26 +29,34 @@ const CreateList = () => {
         />
         <button
           onClick={addSegment}
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+          className="mt-4 ml-4 px-4 py-2 bg-spinred rounded"
         >
           Add
         </button>
       </div>
-      <ul className="mt-4">
+      <ul className="w-full md:w-1/3 mt-4 p-4">
         {segments.value.map((segment, index) => (
-          <li key={index} className="py-2">{segment}</li>
+          <li key={index} className="py-4 border-b border-gray-600">
+            {segment}
+          </li>
         ))}
       </ul>
 
-      <form action="/spin-the-wheel" method="GET" className="mt-4">
-        <input type="hidden" name="segments" value={segments.value.join(",")} />
-        <button
-          type="submit"
-          className="px-4 py-2 bg-green-500 text-white rounded"
-        >
-          Play!
-        </button>
-      </form>
+      {segments.value.length > 1 && (
+        <form action="/spin-the-wheel" method="GET" className="mt-4">
+          <input
+            type="hidden"
+            name="segments"
+            value={segments.value.join(",")}
+          />
+          <button
+            type="submit"
+            className="w-44 px-6 py-4 bg-spinred rounded"
+          >
+            Play!
+          </button>
+        </form>
+      )}
     </div>
   );
 };
