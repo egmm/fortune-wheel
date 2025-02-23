@@ -36,7 +36,7 @@ export const Wheel = ({ rotation, segments, segmentAngle }: Props) => {
                 backgroundColor: colors[index],
               }}
             >
-              <span className="rotate-[45deg]">{segment}</span>
+              <p className="w-1/2 rotate-[45deg]">{segment}</p>
             </div>
           ))}
         </div>
