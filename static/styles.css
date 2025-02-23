@@ -5,6 +5,7 @@
 @layer base {
   html, body {
     @apply h-full w-full;
+    background-color: #141414;
   }
 }
 .clip-wedge {
@@ -13,4 +14,9 @@
 
 .clip-triangle {
   clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.navbar {
+  @apply flex justify-between items-center p-4 text-white;
+  background-color: #0a0a0a;
 }

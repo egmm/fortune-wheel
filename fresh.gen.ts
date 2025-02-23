@@ -4,6 +4,7 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $_layout from "./routes/_layout.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $spin_the_wheel_index from "./routes/spin-the-wheel/index.tsx";
 import * as $spin_the_wheel_result from "./routes/spin-the-wheel/result.tsx";
@@ -15,6 +16,7 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/_layout.tsx": $_layout,
     "./routes/index.tsx": $index,
     "./routes/spin-the-wheel/index.tsx": $spin_the_wheel_index,
     "./routes/spin-the-wheel/result.tsx": $spin_the_wheel_result,
