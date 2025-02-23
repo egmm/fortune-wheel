@@ -17,10 +17,10 @@ export const Wheel = ({ rotation, segments, segmentAngle }: Props) => {
   const colors = generateColors(segments.value.length);
   return segments.value.length > 0
     ? (
-      <div className="relative w-full h-1/2 pt-24 flex items-center justify-center">
+      <div className="relative w-full flex flex-col items-center justify-center">
         <div
           id="indicator"
-          className="absolute w-12 h-12 top-12 left-1/2 -ml-6 bg-slate-900 clip-triangle"
+          className="w-12 h-12 top-12 bg-slate-900 clip-triangle"
         >
         </div>
         <div
