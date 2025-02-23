@@ -65,9 +65,9 @@ const FortuneWheel = ({ segments }: Props) => {
       <button
         onClick={spinWheel}
         disabled={isSpinning.value}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+        className="w-44 mt-12 px-6 py-4 bg-spinred rounded text-white font-bold disabled:opacity-50"
       >
-        Spin
+        Spin!
       </button>
       {result.value && (
         <div className="mt-4 text-lg font-bold">
