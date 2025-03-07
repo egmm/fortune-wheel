@@ -23,6 +23,7 @@ export default function SignIn(
 
   const signOut = async () => {
     await supabase.auth.signOut();
+    location.reload();
   };
 
   return (
