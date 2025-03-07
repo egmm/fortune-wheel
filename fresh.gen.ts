@@ -5,11 +5,15 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
+import * as $_middleware from "./routes/_middleware.ts";
+import * as $auth_callback from "./routes/auth/callback.ts";
+import * as $error from "./routes/error.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $spin_the_wheel_index from "./routes/spin-the-wheel/index.tsx";
 import * as $spin_the_wheel_result from "./routes/spin-the-wheel/result.tsx";
 import * as $create_list from "./islands/create-list.tsx";
 import * as $fortune_wheel from "./islands/fortune-wheel.tsx";
+import * as $sign_in from "./islands/sign-in.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -17,6 +21,9 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/_layout.tsx": $_layout,
+    "./routes/_middleware.ts": $_middleware,
+    "./routes/auth/callback.ts": $auth_callback,
+    "./routes/error.tsx": $error,
     "./routes/index.tsx": $index,
     "./routes/spin-the-wheel/index.tsx": $spin_the_wheel_index,
     "./routes/spin-the-wheel/result.tsx": $spin_the_wheel_result,
@@ -24,6 +31,7 @@ const manifest = {
   islands: {
     "./islands/create-list.tsx": $create_list,
     "./islands/fortune-wheel.tsx": $fortune_wheel,
+    "./islands/sign-in.tsx": $sign_in,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
