@@ -1,8 +1,9 @@
 import { FreshContext } from "$fresh/server.ts";
+import { UserMetadata } from "@supabase/supabase-js";
 import { createClient } from "../../lib/supabase.ts";
 
 export interface AppState {
-  username?: string;
+  userMetadata?: UserMetadata;
   [key: string]: unknown;
 }
 
@@ -20,8 +21,9 @@ export async function handler(_req: Request, _ctx: FreshContext) {
     });
   }
 
+  const { data: { user } } = await supabase.auth.getUser();
   _ctx.state = {
-    username: data.session?.user.user_metadata.name,
+    userMetadata: user?.user_metadata,
   } as AppState;
 
   const resp = await _ctx.next();

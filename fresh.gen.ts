@@ -15,6 +15,7 @@ import * as $sign_in from "./routes/sign-in.tsx";
 import * as $create_list from "./islands/create-list.tsx";
 import * as $fortune_wheel from "./islands/fortune-wheel.tsx";
 import * as $social_sign_in from "./islands/social-sign-in.tsx";
+import * as $user_menu from "./islands/user-menu.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -36,6 +37,7 @@ const manifest = {
     "./islands/create-list.tsx": $create_list,
     "./islands/fortune-wheel.tsx": $fortune_wheel,
     "./islands/social-sign-in.tsx": $social_sign_in,
+    "./islands/user-menu.tsx": $user_menu,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
