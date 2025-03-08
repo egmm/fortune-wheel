@@ -9,7 +9,6 @@ interface Props {
 export default function SocialSignIn(
   { supabaseAnonKey, supabaseUrl, redirectUri }: Props,
 ) {
-  console.log("redirectUri", redirectUri);
   const supabase = createBrowserClient(
     supabaseUrl,
     supabaseAnonKey,
