@@ -28,6 +28,7 @@ const CreateList = () => {
           }}
         />
         <button
+          type="button"
           onClick={addSegment}
           className="mt-4 ml-4 px-4 py-2 bg-spinred rounded"
         >

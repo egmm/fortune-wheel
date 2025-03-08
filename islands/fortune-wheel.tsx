@@ -63,6 +63,7 @@ const FortuneWheel = ({ segments }: Props) => {
         segmentAngle={segmentAngle}
       />
       <button
+        type="button"
         onClick={spinWheel}
         disabled={isSpinning.value}
         className="w-44 mt-12 px-6 py-4 bg-spinred rounded text-white font-bold disabled:opacity-50"

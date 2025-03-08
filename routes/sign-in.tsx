@@ -1,4 +1,5 @@
 import SocialSignIn from "../islands/social-sign-in.tsx";
+import { getCallbackUrl } from "../lib/auth.ts";
 
 export default function SignIn() {
   return (
@@ -10,7 +11,7 @@ export default function SignIn() {
           <SocialSignIn
             supabaseAnonKey={Deno.env.get("SUPABASE_ANON_KEY") || ""}
             supabaseUrl={Deno.env.get("SUPABASE_URL") || ""}
-            redirectUri="http://localhost:8000/auth/callback"
+            redirectUri={getCallbackUrl()}
           />
         </div>
       </div>
