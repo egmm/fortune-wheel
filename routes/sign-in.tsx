@@ -2,6 +2,8 @@ import SocialSignIn from "../islands/social-sign-in.tsx";
 import { getCallbackUrl } from "../lib/auth.ts";
 
 export default function SignIn() {
+  const redirectUri = getCallbackUrl();
+  console.log("redirectUri", redirectUri);
   return (
     <div className="flex justify-center w-full h-screen">
       <div className="flex flex-col items-center justify-center w-full md:w-1/2 h-screen space-y-24 p-4">
@@ -11,7 +13,7 @@ export default function SignIn() {
           <SocialSignIn
             supabaseAnonKey={Deno.env.get("SUPABASE_ANON_KEY") || ""}
             supabaseUrl={Deno.env.get("SUPABASE_URL") || ""}
-            redirectUri={getCallbackUrl()}
+            redirectUri={redirectUri}
           />
         </div>
       </div>
