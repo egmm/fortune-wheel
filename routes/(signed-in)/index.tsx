@@ -1,4 +1,4 @@
-import CreateList from "../islands/create-list.tsx";
+import CreateList from "../../islands/create-list.tsx";
 import { PageProps } from "$fresh/server.ts";
 import { AppState } from "./_middleware.ts";
 

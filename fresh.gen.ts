@@ -2,36 +2,40 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
+import * as $_signed_in_layout from "./routes/(signed-in)/_layout.tsx";
+import * as $_signed_in_middleware from "./routes/(signed-in)/_middleware.ts";
+import * as $_signed_in_index from "./routes/(signed-in)/index.tsx";
+import * as $_signed_in_spin_the_wheel_index from "./routes/(signed-in)/spin-the-wheel/index.tsx";
+import * as $_signed_in_spin_the_wheel_result from "./routes/(signed-in)/spin-the-wheel/result.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
-import * as $_layout from "./routes/_layout.tsx";
-import * as $_middleware from "./routes/_middleware.ts";
 import * as $auth_callback from "./routes/auth/callback.ts";
 import * as $error from "./routes/error.tsx";
-import * as $index from "./routes/index.tsx";
-import * as $spin_the_wheel_index from "./routes/spin-the-wheel/index.tsx";
-import * as $spin_the_wheel_result from "./routes/spin-the-wheel/result.tsx";
+import * as $sign_in from "./routes/sign-in.tsx";
 import * as $create_list from "./islands/create-list.tsx";
 import * as $fortune_wheel from "./islands/fortune-wheel.tsx";
-import * as $sign_in from "./islands/sign-in.tsx";
+import * as $social_sign_in from "./islands/social-sign-in.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
+    "./routes/(signed-in)/_layout.tsx": $_signed_in_layout,
+    "./routes/(signed-in)/_middleware.ts": $_signed_in_middleware,
+    "./routes/(signed-in)/index.tsx": $_signed_in_index,
+    "./routes/(signed-in)/spin-the-wheel/index.tsx":
+      $_signed_in_spin_the_wheel_index,
+    "./routes/(signed-in)/spin-the-wheel/result.tsx":
+      $_signed_in_spin_the_wheel_result,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
-    "./routes/_layout.tsx": $_layout,
-    "./routes/_middleware.ts": $_middleware,
     "./routes/auth/callback.ts": $auth_callback,
     "./routes/error.tsx": $error,
-    "./routes/index.tsx": $index,
-    "./routes/spin-the-wheel/index.tsx": $spin_the_wheel_index,
-    "./routes/spin-the-wheel/result.tsx": $spin_the_wheel_result,
+    "./routes/sign-in.tsx": $sign_in,
   },
   islands: {
     "./islands/create-list.tsx": $create_list,
     "./islands/fortune-wheel.tsx": $fortune_wheel,
-    "./islands/sign-in.tsx": $sign_in,
+    "./islands/social-sign-in.tsx": $social_sign_in,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

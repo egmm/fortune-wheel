@@ -1,6 +1,6 @@
 import { PageProps } from "$fresh/server.ts";
 import { signal } from "@preact/signals";
-import FortuneWheel from "../../islands/fortune-wheel.tsx";
+import FortuneWheel from "../../../islands/fortune-wheel.tsx";
 
 const segments = signal<string[]>([]);
 
