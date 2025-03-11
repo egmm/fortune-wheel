@@ -5,6 +5,8 @@
 import * as $_signed_in_layout from "./routes/(signed-in)/_layout.tsx";
 import * as $_signed_in_middleware from "./routes/(signed-in)/_middleware.ts";
 import * as $_signed_in_index from "./routes/(signed-in)/index.tsx";
+import * as $_signed_in_new_watchlist_create from "./routes/(signed-in)/new-watchlist/create.tsx";
+import * as $_signed_in_new_watchlist_index from "./routes/(signed-in)/new-watchlist/index.tsx";
 import * as $_signed_in_spin_the_wheel_index from "./routes/(signed-in)/spin-the-wheel/index.tsx";
 import * as $_signed_in_spin_the_wheel_result from "./routes/(signed-in)/spin-the-wheel/result.tsx";
 import * as $_404 from "./routes/_404.tsx";
@@ -23,6 +25,10 @@ const manifest = {
     "./routes/(signed-in)/_layout.tsx": $_signed_in_layout,
     "./routes/(signed-in)/_middleware.ts": $_signed_in_middleware,
     "./routes/(signed-in)/index.tsx": $_signed_in_index,
+    "./routes/(signed-in)/new-watchlist/create.tsx":
+      $_signed_in_new_watchlist_create,
+    "./routes/(signed-in)/new-watchlist/index.tsx":
+      $_signed_in_new_watchlist_index,
     "./routes/(signed-in)/spin-the-wheel/index.tsx":
       $_signed_in_spin_the_wheel_index,
     "./routes/(signed-in)/spin-the-wheel/result.tsx":
