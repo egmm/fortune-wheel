@@ -14,7 +14,7 @@ const CreateList = () => {
   };
   return (
     <div className="h-full flex flex-col items-center">
-      <form action="/new-watchlist/create" method="GET" className="mt-4">
+      <form action="/watchlist/new/create" method="GET" className="mt-4">
         <input
           type="text"
           name="name"

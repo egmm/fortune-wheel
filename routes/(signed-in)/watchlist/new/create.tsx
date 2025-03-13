@@ -1,4 +1,4 @@
-import { createClient } from "../../../lib/supabase.ts";
+import { createClient } from "../../../../lib/supabase.ts";
 
 export default async function CreateWatchlist(_req: Request) {
   const headers = new Headers();
@@ -63,7 +63,7 @@ export default async function CreateWatchlist(_req: Request) {
   );
 
   return new Response(null, {
-    headers: { ...headers, location: "/watchlists" },
+    headers: { ...headers, location: "/watchlist" },
     status: 302,
   });
 }

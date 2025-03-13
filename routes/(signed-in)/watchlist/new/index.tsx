@@ -1,4 +1,4 @@
-import CreateList from "../../../islands/create-list.tsx";
+import CreateList from "../../../../islands/create-list.tsx";
 
 export default function CreateWatchlist() {
   return <CreateList />;

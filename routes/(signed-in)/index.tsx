@@ -5,7 +5,7 @@ export default function Home(props: PageProps<unknown, AppState>) {
   return (
     <div>
       <h1>Hello {props.state.userMetadata?.name}</h1>
-      <a href="/new-watchlist">Create a list!</a>
+      <a href="/watchlist/new">Create a list!</a>
     </div>
   );
 }
