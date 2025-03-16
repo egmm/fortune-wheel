@@ -1,7 +1,7 @@
 interface Props {
   className?: string;
 }
-export const PlusIcon = ({ className }: Props) => (
+export const Plus = ({ className }: Props) => (
   <svg
     class={`w-6 h-6 text-gray-800 dark:text-white ${className}`}
     aria-hidden="true"

@@ -1,7 +1,7 @@
 import { signal } from "@preact/signals";
 import { useRef } from "preact/hooks";
-import { EditIcon } from "../components/edit-icon.tsx";
-import { PlusIcon } from "../components/plus-icon.tsx";
+import { Edit } from "../components/icons/Edit.tsx";
+import { Plus } from "../components/icons/Plus.tsx";
 
 const segments = signal<string[]>([]);
 
@@ -22,7 +22,7 @@ const CreateList = () => {
     >
       <div>
         <div className="flex items-center">
-          <EditIcon />
+          <Edit />
           <input
             type="text"
             name="name"
@@ -49,7 +49,7 @@ const CreateList = () => {
             onClick={addSegment}
             className="mt-4 ml-4 px-4 py-2 bg-primary rounded"
           >
-            <PlusIcon />
+            <Plus />
           </button>
         </div>
         <ul className="w-full mt-4">
