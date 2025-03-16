@@ -38,7 +38,9 @@ export default function Layout(
         </a>
         <a href={routes.watchlist} className="flex flex-col items-center">
           <List />
-          <Dot className={route === routes.watchlist ? "" : "invisible"} />
+          <Dot
+            className={route.startsWith(routes.watchlist) ? "" : "invisible"}
+          />
         </a>
       </nav>
     </>
