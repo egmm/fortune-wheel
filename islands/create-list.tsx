@@ -1,5 +1,7 @@
 import { signal } from "@preact/signals";
 import { useRef } from "preact/hooks";
+import { EditIcon } from "../components/edit-icon.tsx";
+import { PlusIcon } from "../components/plus-icon.tsx";
 
 const segments = signal<string[]>([]);
 
@@ -13,19 +15,27 @@ const CreateList = () => {
     }
   };
   return (
-    <div className="h-full flex flex-col items-center">
-      <form action="/watchlist/new/create" method="GET" className="mt-4">
-        <input
-          type="text"
-          name="name"
-          defaultValue="New list"
-          className="mt-4 px-4 py-2 bg-background border border-gray-600 rounded-md"
-        />
+    <form
+      action="/watchlist/new/create"
+      method="GET"
+      className="w-full px-4 md:px-[20%] py-10 flex flex-col justify-between"
+    >
+      <div>
         <div className="flex items-center">
+          <EditIcon />
+          <input
+            type="text"
+            name="name"
+            defaultValue="New list"
+            className="w-full bg-base-background text-h2 font-bold focus:ring-2 focus:ring-transparent focus:outline-none"
+          />
+        </div>
+
+        <div className="w-full flex items-center">
           <input
             ref={inputRef}
             type="text"
-            className="mt-4 px-4 py-2 bg-background border border-gray-600 rounded-md"
+            className="mt-4 px-4 py-2 bg-base-background border border-gray rounded-md flex-1"
             placeholder="Add a film"
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -37,36 +47,35 @@ const CreateList = () => {
           <button
             type="button"
             onClick={addSegment}
-            className="mt-4 ml-4 px-4 py-2 bg-spinred rounded"
+            className="mt-4 ml-4 px-4 py-2 bg-primary rounded"
           >
-            Add
+            <PlusIcon />
           </button>
         </div>
-        <ul className="w-full md:w-1/3 mt-4 p-4">
+        <ul className="w-full mt-4">
           {segments.value.map((segment, index) => (
-            <li key={index} className="py-4 border-b border-gray-600">
+            <li key={index} className="mt-4 p-4 border border-gray rounded-md">
               {segment}
             </li>
           ))}
         </ul>
 
-        {segments.value.length > 0 && (
-          <>
-            <input
-              type="hidden"
-              name="items"
-              value={segments.value.join(",")}
-            />
-            <button
-              type="submit"
-              className="w-44 px-6 py-4 bg-spinred rounded"
-            >
-              Save
-            </button>
-          </>
-        )}
-      </form>
-    </div>
+        <input
+          type="hidden"
+          name="items"
+          value={segments.value.join(",")}
+        />
+      </div>
+      <button
+        type="submit"
+        className={`w-full md:w-60 self-center px-6 py-4 bg-primary ${
+          segments.value.length === 0 ? "opacity-50" : ""
+        } rounded text-subtitle font-bold`}
+        disabled={segments.value.length === 0}
+      >
+        Save
+      </button>
+    </form>
   );
 };
 

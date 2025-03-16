@@ -63,7 +63,7 @@ export default async function CreateWatchlist(_req: Request) {
   );
 
   return new Response(null, {
-    headers: { ...headers, location: "/watchlist" },
+    headers: { ...headers, location: "/watchlist/view" },
     status: 302,
   });
 }

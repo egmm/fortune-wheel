@@ -17,11 +17,22 @@ export default function WatchlistDetails(
   props: PageProps<Watchlist, WatchlistState>,
 ) {
   return (
-    <div>
-      <h1>{props.data.name}</h1>
-      <ul>
-        {props.data.items.map((item) => <li key={item.id}>{item.title}</li>)}
-      </ul>
+    <div className="w-full flex flex-col items-center">
+      <div className="p-4 w-full md:w-1/2">
+        <h2>{props.data.name}</h2>
+        <ul className="mt-4">
+          {props.data.items.map((item) => (
+            <li
+              key={item.id}
+              className="bg-dark-background rounded-md p-4 mt-4"
+            >
+              <p>
+                {item.title}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

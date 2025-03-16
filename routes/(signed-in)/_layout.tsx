@@ -7,10 +7,10 @@ export default function Layout(
 ) {
   return (
     <>
-      <nav className="navbar flex justify-between">
-        <h1 className="text-2xl font-bold">
+      <nav className="h-16 flex justify-between items-center p-4">
+        <h4>
           <a href="/" className="text-white">FilmLib</a>
-        </h1>
+        </h4>
 
         <UserMenu
           avatarUrl={userMetadata?.avatar_url}
@@ -18,7 +18,9 @@ export default function Layout(
           supabaseUrl={Deno.env.get("SUPABASE_URL") || ""}
         />
       </nav>
-      <Component />
+      <div className="w-full flex flex-1">
+        <Component />
+      </div>
     </>
   );
 }
