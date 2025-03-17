@@ -1,4 +1,5 @@
 import { PageProps } from "$fresh/server.ts";
+import { VideoCamera } from "../../../../components/icons/video-camera.tsx";
 import { WatchlistState } from "./_middleware.ts";
 
 export default function AllWatchlists(
@@ -19,6 +20,12 @@ export default function AllWatchlists(
               <a href={`/watchlist/view/${watchlist.id}`}>
                 <h4>{watchlist.name}</h4>
               </a>
+              <div className="flex items-center mt-2">
+                <VideoCamera className="text-primary" />
+                <p className="ml-2 text-body-2">
+                  {watchlist.items.length} films
+                </p>
+              </div>
             </li>
           ))}
         </ul>
