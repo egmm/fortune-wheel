@@ -4,6 +4,7 @@ import { Edit } from "../components/icons/Edit.tsx";
 import { Plus } from "../components/icons/Plus.tsx";
 import { Bin } from "../components/icons/Bin.tsx";
 
+const listName = signal<string>("New list");
 const segments = signal<string[]>([]);
 
 const CreateList = () => {
@@ -18,7 +19,6 @@ const CreateList = () => {
   const removeSegment = (index: number) => {
     segments.value = segments.value.filter((_, i) => i !== index);
   };
-  console.log('segments', segments.value)
   return (
     <form
       action="/watchlist/new/create"
@@ -28,11 +28,17 @@ const CreateList = () => {
       <div>
         <div className="flex items-center">
           <Edit />
-          <input
-            type="text"
+          <textarea
             name="name"
-            defaultValue="New list"
-            className="w-full bg-base-background text-h2 font-bold focus:ring-2 focus:ring-transparent focus:outline-none"
+            value={listName.value}
+            className="w-full bg-base-background text-h2 font-bold focus:ring-2 focus:ring-transparent focus:outline-none resize-none overflow-hidden"
+            rows={1}
+            onInput={(e) => {
+              const target = e.target as HTMLTextAreaElement;
+              listName.value = target.value;
+              target.style.height = "auto";
+              target.style.height = `${target.scrollHeight}px`;
+            }}
           />
         </div>
 
