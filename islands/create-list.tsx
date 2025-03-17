@@ -2,6 +2,7 @@ import { signal } from "@preact/signals";
 import { useRef } from "preact/hooks";
 import { Edit } from "../components/icons/Edit.tsx";
 import { Plus } from "../components/icons/Plus.tsx";
+import { Bin } from "../components/icons/Bin.tsx";
 
 const segments = signal<string[]>([]);
 
@@ -14,6 +15,10 @@ const CreateList = () => {
       inputRef.current.value = "";
     }
   };
+  const removeSegment = (index: number) => {
+    segments.value = segments.value.filter((_, i) => i !== index);
+  };
+  console.log('segments', segments.value)
   return (
     <form
       action="/watchlist/new/create"
@@ -54,8 +59,14 @@ const CreateList = () => {
         </div>
         <ul className="w-full mt-4">
           {segments.value.map((segment, index) => (
-            <li key={index} className="mt-4 p-4 border border-gray rounded-md">
+            <li
+              key={index}
+              className="flex justify-between mt-4 p-4 border border-gray rounded-md"
+            >
               {segment}
+              <button type="button" onClick={() => removeSegment(index)}>
+                <Bin />
+              </button>
             </li>
           ))}
         </ul>
