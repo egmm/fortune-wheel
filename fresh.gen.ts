@@ -9,6 +9,7 @@ import * as $_signed_in_spin_the_wheel_index from "./routes/(signed-in)/spin-the
 import * as $_signed_in_spin_the_wheel_result from "./routes/(signed-in)/spin-the-wheel/result.tsx";
 import * as $_signed_in_watchlist_new_create from "./routes/(signed-in)/watchlist/new/create.tsx";
 import * as $_signed_in_watchlist_new_index from "./routes/(signed-in)/watchlist/new/index.tsx";
+import * as $_signed_in_watchlist_remove_id_ from "./routes/(signed-in)/watchlist/remove/[id].ts";
 import * as $_signed_in_watchlist_view_id_ from "./routes/(signed-in)/watchlist/view/[id].tsx";
 import * as $_signed_in_watchlist_view_middleware from "./routes/(signed-in)/watchlist/view/_middleware.ts";
 import * as $_signed_in_watchlist_view_index from "./routes/(signed-in)/watchlist/view/index.tsx";
@@ -36,6 +37,8 @@ const manifest = {
       $_signed_in_watchlist_new_create,
     "./routes/(signed-in)/watchlist/new/index.tsx":
       $_signed_in_watchlist_new_index,
+    "./routes/(signed-in)/watchlist/remove/[id].ts":
+      $_signed_in_watchlist_remove_id_,
     "./routes/(signed-in)/watchlist/view/[id].tsx":
       $_signed_in_watchlist_view_id_,
     "./routes/(signed-in)/watchlist/view/_middleware.ts":
