@@ -1,4 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { Bin } from "../../../../components/icons/Bin.tsx";
 import { Watchlist, WatchlistState } from "./_middleware.ts";
 
 export const handler: Handlers<Watchlist, WatchlistState> = {
@@ -24,11 +25,14 @@ export default function WatchlistDetails(
           {props.data.items.map((item) => (
             <li
               key={item.id}
-              className="bg-dark-background rounded-md p-4 mt-4"
+              className="flex justify-between items-center bg-dark-background rounded-md p-4 mt-4"
             >
               <p>
                 {item.title}
               </p>
+              <a className="p-2" href={`/watchlist/remove/item/${props.data.id}/${item.id}`}>
+                <Bin />
+              </a>
             </li>
           ))}
         </ul>
