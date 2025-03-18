@@ -44,7 +44,7 @@ export default function AllWatchlists(
           </ul>
         </div>
       </div>
-      <div className="w-full flex justify-center self-end">
+      <div className="w-full flex justify-center self-end p-4">
         <a
           className="py-4 bg-primary rounded-md text-subtitle font-bold text-center w-full md:w-1/3"
           href="/watchlist/new"
