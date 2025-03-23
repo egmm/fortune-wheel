@@ -7,6 +7,7 @@ import { Bin } from "../components/icons/Bin.tsx";
 
 const listName = signal<string>("");
 const segments = signal<string[]>([]);
+const toRemove = signal<number[]>([]);
 
 interface Props {
   watchlist: Watchlist;
@@ -14,7 +15,7 @@ interface Props {
 export default function UpdateWatchlist({ watchlist }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const isDirty = listName.value !== watchlist.name ||
-    segments.value.length > 0;
+    segments.value.length > 0 || toRemove.value.length > 0;
 
   useEffect(() => {
     listName.value = watchlist.name;
@@ -28,6 +29,14 @@ export default function UpdateWatchlist({ watchlist }: Props) {
   };
   const removeSegment = (index: number) => {
     segments.value = segments.value.filter((_, i) => i !== index);
+  };
+  const isToRemove = (index: number) => toRemove.value.includes(index);
+  const toggleToRemove = (index: number) => {
+    if (isToRemove(index)) {
+      toRemove.value = toRemove.value.filter((i) => i !== index);
+    } else {
+      toRemove.value = [...toRemove.value, index];
+    }
   };
   return (
     <form
@@ -79,18 +88,33 @@ export default function UpdateWatchlist({ watchlist }: Props) {
           {watchlist.items.map((item) => (
             <li
               key={item.id}
-              className="flex justify-between items-center bg-dark-background rounded-md p-4 mt-4"
+              className={`flex justify-between items-center bg-dark-background rounded-md p-4 mt-4 ${
+                isToRemove(item.id) ? "border border-primary" : ""
+              }`}
             >
               <p>
                 {item.title}
               </p>
-              <a
+              <button
+                type="button"
                 className="p-2"
-                href={`/watchlist/remove/item/${watchlist.id}/${item.id}`}
+                onClick={() => {
+                  toggleToRemove(item.id);
+                }}
               >
                 <Bin />
-              </a>
+              </button>
             </li>
+          ))}
+
+          {/* Items to be removed */}
+          {toRemove.value.map((item, i) => (
+            <input
+              key={i}
+              type="hidden"
+              name="itemsToRemove[]"
+              value={item}
+            />
           ))}
 
           {/* New items */}

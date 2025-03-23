@@ -13,6 +13,8 @@ export const handler: Handlers<unknown, WatchlistState> = {
     const formData = await _req.formData();
     const name = formData.get("name");
     const newItems = formData.getAll("newItems[]");
+    const itemsToRemove = formData.getAll("itemsToRemove[]");
+
     if (name) {
       const { error } = await supabase
         .from("watchlists")
@@ -41,6 +43,21 @@ export const handler: Handlers<unknown, WatchlistState> = {
 
       if (error) {
         console.error(`Error adding items to watchlist: ${id}`, error);
+        return new Response(null, {
+          headers: { location: "/error" },
+          status: 500,
+        });
+      }
+    }
+
+    if (itemsToRemove.length) {
+      const { error } = await supabase
+        .from("watchlist_items")
+        .delete()
+        .in("id", itemsToRemove.map((i) => Number(i)));
+
+      if (error) {
+        console.error(`Error deleting watchlist item: ${id}`, error);
         return new Response(null, {
           headers: { location: "/error" },
           status: 500,
