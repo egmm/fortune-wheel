@@ -3,11 +3,11 @@ import { UserMetadata } from "@supabase/supabase-js";
 import { createClient } from "../../lib/supabase.ts";
 
 export interface AppState {
+  userId: string;
   userMetadata?: UserMetadata;
-  [key: string]: unknown;
 }
 
-export async function handler(_req: Request, _ctx: FreshContext) {
+export async function handler(_req: Request, _ctx: FreshContext<AppState>) {
   const headers = new Headers();
   const supabase = createClient(_req, headers);
   const { data } = await supabase.auth.getSession();
@@ -22,9 +22,18 @@ export async function handler(_req: Request, _ctx: FreshContext) {
   }
 
   const { data: { user } } = await supabase.auth.getUser();
+
+  if (user === null) {
+    return new Response(null, {
+      headers: { ...headers, location: "/error" },
+      status: 500,
+    });
+  }
+
   _ctx.state = {
-    userMetadata: user?.user_metadata,
-  } as AppState;
+    userId: user.id,
+    userMetadata: user.user_metadata,
+  };
 
   const resp = await _ctx.next();
   return resp;
