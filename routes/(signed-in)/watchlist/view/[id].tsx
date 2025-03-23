@@ -19,7 +19,7 @@ export default function WatchlistDetails(
 ) {
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="p-4 w-full md:w-1/2">
+      <div className="p-4 w-full h-full md:w-1/2">
         <UpdateWatchlist watchlist={props.data} />
       </div>
     </div>
