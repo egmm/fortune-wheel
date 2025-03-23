@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { Bin } from "../../../../components/icons/Bin.tsx";
+import UpdateWatchlist from "../../../../islands/update-list.tsx";
 import { Watchlist, WatchlistState } from "./_middleware.ts";
 
 export const handler: Handlers<Watchlist, WatchlistState> = {
@@ -20,22 +20,7 @@ export default function WatchlistDetails(
   return (
     <div className="w-full flex flex-col items-center">
       <div className="p-4 w-full md:w-1/2">
-        <h2>{props.data.name}</h2>
-        <ul className="mt-4">
-          {props.data.items.map((item) => (
-            <li
-              key={item.id}
-              className="flex justify-between items-center bg-dark-background rounded-md p-4 mt-4"
-            >
-              <p>
-                {item.title}
-              </p>
-              <a className="p-2" href={`/watchlist/remove/item/${props.data.id}/${item.id}`}>
-                <Bin />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <UpdateWatchlist watchlist={props.data} />
       </div>
     </div>
   );
